@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "kernel.h": "c",
+        "status.h": "c",
+        "stdbool.h": "c"
+    }
+}
