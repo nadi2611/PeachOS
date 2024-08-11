@@ -119,7 +119,7 @@ void heap_mark_blocks_taken(struct heap* heap, int start_block, int total_blocks
         entry |= HEAP_BLOCK_HAS_NEXT;
     }
 
-    for (int i = start_block; i < end_block; i++)
+    for (int i = start_block; i <= end_block; i++)
     {
         heap->table->entries[i] = entry;
         entry = HEAP_BLOCK_TABLE_ENTRY_TAKEN;
