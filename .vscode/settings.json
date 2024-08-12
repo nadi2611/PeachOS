@@ -2,6 +2,7 @@
     "files.associations": {
         "kernel.h": "c",
         "status.h": "c",
-        "stdbool.h": "c"
+        "stdbool.h": "c",
+        "idt.h": "c"
     }
 }
