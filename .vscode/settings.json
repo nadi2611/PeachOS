@@ -3,6 +3,9 @@
         "kernel.h": "c",
         "status.h": "c",
         "stdbool.h": "c",
-        "idt.h": "c"
+        "idt.h": "c",
+        "heap.h": "c",
+        "stddef.h": "c",
+        "kheap.h": "c"
     }
 }
