@@ -53,7 +53,7 @@ int paging_get_indexes(void* virtual_address, uint32_t* directory_index_out, uin
         goto out;
     }
 
-    *directory_index_out = ((uint32_t)virtual_address / PAGING_TOTAL_ENTRIES_PER_TABLE * PAGING_PAGE_SIZE);
+    *directory_index_out = ((uint32_t)virtual_address / (PAGING_TOTAL_ENTRIES_PER_TABLE * PAGING_PAGE_SIZE));
     *table_index_out = ((uint32_t) virtual_address % (PAGING_TOTAL_ENTRIES_PER_TABLE * PAGING_PAGE_SIZE) / PAGING_PAGE_SIZE);
 
 
