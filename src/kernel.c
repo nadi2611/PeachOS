@@ -88,6 +88,9 @@ void kernel_main()
     // Initialize the heap
     kheap_init();
 
+    // Search and Initialize the disk
+    disk_search_and_init();
+
     // Initialize the IDT
     idt_init();
 
@@ -103,8 +106,6 @@ void kernel_main()
     enable_paging();
 
     
-    char buf[512];
-    disk_read_sector(0, 1, buf);
     
     // Enable the system interrupts
     enable_interrupts();
