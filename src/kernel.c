@@ -104,7 +104,7 @@ void kernel_main()
     enable_interrupts();
 
     struct disk_stream* stream = diskstreamer_new(0);
-    diskstreamer_seek(stream, 0x1);
+    diskstreamer_seek(stream, 0x201);
 
     char c = 0;
     int res = diskstreamer_read(stream, &c, 1);
