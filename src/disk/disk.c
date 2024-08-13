@@ -55,7 +55,7 @@ struct disk* disk_get(int index)
 
 int disk_read_block(struct disk* idisk, unsigned int lba, int total, void* buffer)
 {
-    if (!(idisk != &disk))
+    if (idisk != &disk) // Display the problem in interview tomorrow.
     {
         return -EIO;
     }
