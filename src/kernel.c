@@ -81,6 +81,9 @@ void kernel_main()
     // Initialize the heap
     kheap_init();
 
+    // Initialize filesystems
+    fs_init();
+
     // Search and Initialize the disk
     disk_search_and_init();
 
@@ -104,8 +107,6 @@ void kernel_main()
     // Enable the system interrupts
     enable_interrupts();
 
-    char buf[20];
-    strcpy(buf, "hello!");
     
     while(1){}
 

@@ -36,7 +36,6 @@ int disk_read_sector(int lba, int total, void* buf)
     return 0;
 }
 
-
 void disk_search_and_init()
 {
     memset(&disk, 0, sizeof(disk));
