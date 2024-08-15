@@ -8,29 +8,30 @@ struct disk disk;
 
 int disk_read_sector(int lba, int total, void* buf)
 {
-    // Send commands to the disk
-    outb(0x1F6, (lba >> 24) | 0xE0);               // Send high bits of LBA with drive/head info
-    outb(0x1F2, total);                            // Send the number of sectors to read
-    outb(0x1F3, (unsigned char)(lba & 0xFF));      // Send low byte of LBA
-    outb(0x1F4, (unsigned char)((lba >> 8) & 0xFF)); // Send mid-low byte of LBA
-    outb(0x1F5, (unsigned char)((lba >> 16) & 0xFF)); // Send mid-high byte of LBA
-    outb(0x1F7, 0x20);                             // Send the READ command
+    outb(0x1F6, (lba >> 24) | 0xE0);
+    outb(0x1F2, total);
+    outb(0x1F3, (unsigned char)(lba & 0xff));
+    outb(0x1F4, (unsigned char)(lba >> 8));
+    outb(0x1F5, (unsigned char)(lba >> 16));
+    outb(0x1F7, 0x20);
 
-    unsigned char* ptr = (unsigned char*) buf;     // Changed to unsigned char* for byte alignment
+    unsigned short* ptr = (unsigned short*) buf;
     for (int b = 0; b < total; b++)
     {
-        // Wait until the drive is ready to transfer data
-        while (!(insb(0x1F7) & 0x08))
+        // Wait for the buffer to be ready
+        char c = insb(0x1F7);
+        while(!(c & 0x08))
         {
-            // You could add a small delay here if needed
+            c = insb(0x1F7);
         }
 
         // Copy from hard disk to memory
-        for (int i = 0; i < 512; i++)              // Reading 512 bytes (1 sector) in 8-bit chunks
+        for (int i = 0; i < 256; i++)
         {
-            *ptr = insb(0x1F0);                    // Use 8-bit read to ensure correct data alignment
+            *ptr = insw(0x1F0);
             ptr++;
         }
+
     }
     return 0;
 }
