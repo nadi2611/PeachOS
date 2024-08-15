@@ -4,12 +4,32 @@ BITS 16
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
 
-_start:
-    jmp short start
-    nop
+jmp short start
+nop
 
- times 33 db 0
- 
+; FAT16 Header
+OEMIdentifier               db 'PEACHOS '
+BytesPerSector              dw 0x200
+SectorPerCluster            db 0x80
+ReservedSectors             dw 200 ; Kernel resides here
+FATCopies                   db 0x02
+RootDirEntries              dw 0x40
+NumSectors                  dw 0x00
+MediaType                   db 0xF8
+SectorsPerFat               dw 0x100
+SectorsPerTrack             dw 0x20
+NumberOfHeads               dw 0x40
+HiddenSectors               dd 0x00
+SectorsBig                  dd 0x773594
+
+; Extended BPB (Dos 4.0)
+DriveNumber                 db 0x80            ; BIOS drive number (0x80 for first hard disk)
+WinNTBit                    db 0x00            ; Reserved (unused)
+BootSignature               db 0x29            ; Extended boot signature (0x29 indicates presence of following fields)
+VolumeID                    dd 0xD105          ; Volume serial number (randomly generated or user-defined)
+VolumeLabel                 db 'PEACHOS BOO'   ; Volume label (11 characters)
+FileSystemType              db 'FAT16   '      ; File system type (8 characters, padded with spaces)
+
 start:
     jmp 0:step2
 

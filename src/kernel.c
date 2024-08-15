@@ -98,20 +98,13 @@ void kernel_main()
     // Enable paging
     enable_paging();
 
+    char buf[512];
+    disk_read_sector(0, 1, buf);
     
+    //print(buf);
     
     // Enable the system interrupts
     enable_interrupts();
 
-    struct disk_stream* stream = diskstreamer_new(0);
-    diskstreamer_seek(stream, 0x201);
 
-    char c = 0;
-    int res = diskstreamer_read(stream, &c, 1);
-
-    if (res == 0)
-    {
-
-    }
-    while(1) {}
 }

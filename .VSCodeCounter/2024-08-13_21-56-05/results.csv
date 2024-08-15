@@ -1,0 +1,31 @@
+"filename", "language", "C", "LinkerScript", "C++", "x86 and x86_64 Assembly", "comment", "blank", "total"
+"/home/nadi/Desktop/PeachOS/src/boot/boot.asm", "x86 and x86_64 Assembly", 0, 0, 0, 92, 17, 23, 132
+"/home/nadi/Desktop/PeachOS/src/config.h", "C++", 0, 0, 11, 0, 1, 4, 16
+"/home/nadi/Desktop/PeachOS/src/disk/disk.c", "C", 52, 0, 0, 0, 2, 10, 64
+"/home/nadi/Desktop/PeachOS/src/disk/disk.h", "C", 13, 0, 0, 0, 1, 6, 20
+"/home/nadi/Desktop/PeachOS/src/disk/streamer.c", "C", 47, 0, 0, 0, 1, 14, 62
+"/home/nadi/Desktop/PeachOS/src/disk/streamer.h", "C", 13, 0, 0, 0, 0, 3, 16
+"/home/nadi/Desktop/PeachOS/src/fs/pparser.c", "C", 108, 0, 0, 0, 1, 35, 144
+"/home/nadi/Desktop/PeachOS/src/fs/pparser.h", "C++", 0, 0, 15, 0, 0, 4, 19
+"/home/nadi/Desktop/PeachOS/src/idt/idt.asm", "x86 and x86_64 Assembly", 0, 0, 0, 35, 0, 11, 46
+"/home/nadi/Desktop/PeachOS/src/idt/idt.c", "C", 45, 0, 0, 0, 1, 13, 59
+"/home/nadi/Desktop/PeachOS/src/idt/idt.h", "C", 20, 0, 0, 0, 0, 7, 27
+"/home/nadi/Desktop/PeachOS/src/io/io.asm", "x86 and x86_64 Assembly", 0, 0, 0, 37, 0, 17, 54
+"/home/nadi/Desktop/PeachOS/src/io/io.h", "C++", 0, 0, 7, 0, 0, 6, 13
+"/home/nadi/Desktop/PeachOS/src/kernel.asm", "x86 and x86_64 Assembly", 0, 0, 0, 26, 3, 22, 51
+"/home/nadi/Desktop/PeachOS/src/kernel.c", "C", 80, 0, 0, 0, 9, 28, 117
+"/home/nadi/Desktop/PeachOS/src/kernel.h", "C", 8, 0, 0, 0, 0, 6, 14
+"/home/nadi/Desktop/PeachOS/src/linker.ld", "LinkerScript", 0, 27, 0, 0, 0, 8, 35
+"/home/nadi/Desktop/PeachOS/src/memory/heap/heap.c", "C", 148, 0, 0, 0, 2, 40, 190
+"/home/nadi/Desktop/PeachOS/src/memory/heap/heap.h", "C", 25, 0, 0, 0, 1, 9, 35
+"/home/nadi/Desktop/PeachOS/src/memory/heap/kheap.c", "C", 37, 0, 0, 0, 0, 8, 45
+"/home/nadi/Desktop/PeachOS/src/memory/heap/kheap.h", "C", 9, 0, 0, 0, 0, 3, 12
+"/home/nadi/Desktop/PeachOS/src/memory/memory.c", "C", 23, 0, 0, 0, 0, 5, 28
+"/home/nadi/Desktop/PeachOS/src/memory/memory.h", "C++", 0, 0, 6, 0, 0, 4, 10
+"/home/nadi/Desktop/PeachOS/src/memory/paging/paging.asm", "x86 and x86_64 Assembly", 0, 0, 0, 19, 0, 7, 26
+"/home/nadi/Desktop/PeachOS/src/memory/paging/paging.c", "C", 67, 0, 0, 0, 0, 18, 85
+"/home/nadi/Desktop/PeachOS/src/memory/paging/paging.h", "C++", 0, 0, 23, 0, 0, 9, 32
+"/home/nadi/Desktop/PeachOS/src/status.h", "C", 8, 0, 0, 0, 0, 1, 9
+"/home/nadi/Desktop/PeachOS/src/string/string.c", "C", 31, 0, 0, 0, 0, 8, 39
+"/home/nadi/Desktop/PeachOS/src/string/string.h", "C", 8, 0, 0, 0, 0, 3, 11
+"Total", "-", 742, 27, 62, 209, 39, 332, 1411

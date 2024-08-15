@@ -1,0 +1,67 @@
+Date : 2024-08-13 21:56:05
+Directory : /home/nadi/Desktop/PeachOS/src
+Total : 29 files,  1040 codes, 39 comments, 332 blanks, all 1411 lines
+
+Languages
++-------------------------+------------+------------+------------+------------+------------+
+| language                | files      | code       | comment    | blank      | total      |
++-------------------------+------------+------------+------------+------------+------------+
+| C                       |         18 |        742 |         18 |        217 |        977 |
+| x86 and x86_64 Assembly |          5 |        209 |         20 |         80 |        309 |
+| C++                     |          5 |         62 |          1 |         27 |         90 |
+| LinkerScript            |          1 |         27 |          0 |          8 |         35 |
++-------------------------+------------+------------+------------+------------+------------+
+
+Directories
++---------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                    | files      | code       | comment    | blank      | total      |
++---------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                       |         29 |      1,040 |         39 |        332 |      1,411 |
+| . (Files)                                               |          6 |        160 |         13 |         69 |        242 |
+| boot                                                    |          1 |         92 |         17 |         23 |        132 |
+| disk                                                    |          4 |        125 |          4 |         33 |        162 |
+| fs                                                      |          2 |        123 |          1 |         39 |        163 |
+| idt                                                     |          3 |        100 |          1 |         31 |        132 |
+| io                                                      |          2 |         44 |          0 |         23 |         67 |
+| memory                                                  |          9 |        357 |          3 |        103 |        463 |
+| memory (Files)                                          |          2 |         29 |          0 |          9 |         38 |
+| memory/heap                                             |          4 |        219 |          3 |         60 |        282 |
+| memory/paging                                           |          3 |        109 |          0 |         34 |        143 |
+| string                                                  |          2 |         39 |          0 |         11 |         50 |
++---------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++---------------------------------------------------------+-------------------------+------------+------------+------------+------------+
+| filename                                                | language                | code       | comment    | blank      | total      |
++---------------------------------------------------------+-------------------------+------------+------------+------------+------------+
+| /home/nadi/Desktop/PeachOS/src/boot/boot.asm            | x86 and x86_64 Assembly |         92 |         17 |         23 |        132 |
+| /home/nadi/Desktop/PeachOS/src/config.h                 | C++                     |         11 |          1 |          4 |         16 |
+| /home/nadi/Desktop/PeachOS/src/disk/disk.c              | C                       |         52 |          2 |         10 |         64 |
+| /home/nadi/Desktop/PeachOS/src/disk/disk.h              | C                       |         13 |          1 |          6 |         20 |
+| /home/nadi/Desktop/PeachOS/src/disk/streamer.c          | C                       |         47 |          1 |         14 |         62 |
+| /home/nadi/Desktop/PeachOS/src/disk/streamer.h          | C                       |         13 |          0 |          3 |         16 |
+| /home/nadi/Desktop/PeachOS/src/fs/pparser.c             | C                       |        108 |          1 |         35 |        144 |
+| /home/nadi/Desktop/PeachOS/src/fs/pparser.h             | C++                     |         15 |          0 |          4 |         19 |
+| /home/nadi/Desktop/PeachOS/src/idt/idt.asm              | x86 and x86_64 Assembly |         35 |          0 |         11 |         46 |
+| /home/nadi/Desktop/PeachOS/src/idt/idt.c                | C                       |         45 |          1 |         13 |         59 |
+| /home/nadi/Desktop/PeachOS/src/idt/idt.h                | C                       |         20 |          0 |          7 |         27 |
+| /home/nadi/Desktop/PeachOS/src/io/io.asm                | x86 and x86_64 Assembly |         37 |          0 |         17 |         54 |
+| /home/nadi/Desktop/PeachOS/src/io/io.h                  | C++                     |          7 |          0 |          6 |         13 |
+| /home/nadi/Desktop/PeachOS/src/kernel.asm               | x86 and x86_64 Assembly |         26 |          3 |         22 |         51 |
+| /home/nadi/Desktop/PeachOS/src/kernel.c                 | C                       |         80 |          9 |         28 |        117 |
+| /home/nadi/Desktop/PeachOS/src/kernel.h                 | C                       |          8 |          0 |          6 |         14 |
+| /home/nadi/Desktop/PeachOS/src/linker.ld                | LinkerScript            |         27 |          0 |          8 |         35 |
+| /home/nadi/Desktop/PeachOS/src/memory/heap/heap.c       | C                       |        148 |          2 |         40 |        190 |
+| /home/nadi/Desktop/PeachOS/src/memory/heap/heap.h       | C                       |         25 |          1 |          9 |         35 |
+| /home/nadi/Desktop/PeachOS/src/memory/heap/kheap.c      | C                       |         37 |          0 |          8 |         45 |
+| /home/nadi/Desktop/PeachOS/src/memory/heap/kheap.h      | C                       |          9 |          0 |          3 |         12 |
+| /home/nadi/Desktop/PeachOS/src/memory/memory.c          | C                       |         23 |          0 |          5 |         28 |
+| /home/nadi/Desktop/PeachOS/src/memory/memory.h          | C++                     |          6 |          0 |          4 |         10 |
+| /home/nadi/Desktop/PeachOS/src/memory/paging/paging.asm | x86 and x86_64 Assembly |         19 |          0 |          7 |         26 |
+| /home/nadi/Desktop/PeachOS/src/memory/paging/paging.c   | C                       |         67 |          0 |         18 |         85 |
+| /home/nadi/Desktop/PeachOS/src/memory/paging/paging.h   | C++                     |         23 |          0 |          9 |         32 |
+| /home/nadi/Desktop/PeachOS/src/status.h                 | C                       |          8 |          0 |          1 |          9 |
+| /home/nadi/Desktop/PeachOS/src/string/string.c          | C                       |         31 |          0 |          8 |         39 |
+| /home/nadi/Desktop/PeachOS/src/string/string.h          | C                       |          8 |          0 |          3 |         11 |
+| Total                                                   |                         |      1,040 |         39 |        332 |      1,411 |
++---------------------------------------------------------+-------------------------+------------+------------+------------+------------+

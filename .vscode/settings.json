@@ -9,6 +9,7 @@
         "kheap.h": "c",
         "string.h": "c",
         "streamer.h": "c",
-        "disk.h": "c"
+        "disk.h": "c",
+        "memory.h": "c"
     }
 }
