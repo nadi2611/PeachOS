@@ -3,6 +3,7 @@
 #include "status.h"
 #include "memory/memory.h"
 #include "memory/heap/heap.h"
+#include "memory/heap/kheap.h"
 #include "kernel.h"
 #include "fat/fat16.h"
 #include "disk/disk.h"
@@ -61,6 +62,12 @@ void fs_init()
 {
     memset(file_descriptors, 0, sizeof(file_descriptors));
     fs_load();
+}
+
+static void file_free_descriptor(struct file_descriptor* desc)
+{
+    file_descriptors[desc->index - 1] = 0x00;
+    kfree(desc);
 }
 
 static int file_new_descriptor(struct file_descriptor** desc_out)
@@ -232,6 +239,10 @@ int fclose(int fd)
     }
 
     res = desc->filesystem->close(desc->private);
+    if (res == PEACHOS_ALL_OK)
+    {
+        file_free_descriptor(desc);
+    }
 out:
     return res;
 }
