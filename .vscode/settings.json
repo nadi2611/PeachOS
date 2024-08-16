@@ -10,6 +10,13 @@
         "string.h": "c",
         "streamer.h": "c",
         "disk.h": "c",
-        "memory.h": "c"
+        "memory.h": "c",
+        "optional": "c",
+        "system_error": "c",
+        "array": "c",
+        "functional": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }

@@ -1,0 +1,73 @@
+Date : 2024-08-16 18:25:02
+Directory : /home/nadi/Desktop/VertexOS/src
+Total : 33 files,  1714 codes, 59 comments, 494 blanks, all 2267 lines
+
+Languages
++-------------------------+------------+------------+------------+------------+------------+
+| language                | files      | code       | comment    | blank      | total      |
++-------------------------+------------+------------+------------+------------+------------+
+| C                       |         21 |      1,359 |         32 |        374 |      1,765 |
+| x86 and x86_64 Assembly |          5 |        226 |         22 |         77 |        325 |
+| C++                     |          6 |        102 |          5 |         39 |        146 |
+| LinkerScript            |          1 |         27 |          0 |          4 |         31 |
++-------------------------+------------+------------+------------+------------+------------+
+
+Directories
++----------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                     | files      | code       | comment    | blank      | total      |
++----------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                        |         33 |      1,714 |         59 |        494 |      2,267 |
+| . (Files)                                                |          6 |        161 |         15 |         68 |        244 |
+| boot                                                     |          1 |        109 |         19 |         24 |        152 |
+| disk                                                     |          4 |        129 |          6 |         31 |        166 |
+| fs                                                       |          6 |        704 |         15 |        194 |        913 |
+| fs (Files)                                               |          4 |        320 |          8 |         96 |        424 |
+| fs/fat                                                   |          2 |        384 |          7 |         98 |        489 |
+| idt                                                      |          3 |        100 |          1 |         31 |        132 |
+| io                                                       |          2 |         44 |          0 |         16 |         60 |
+| memory                                                   |          9 |        357 |          3 |        103 |        463 |
+| memory (Files)                                           |          2 |         29 |          0 |          9 |         38 |
+| memory/heap                                              |          4 |        219 |          3 |         60 |        282 |
+| memory/paging                                            |          3 |        109 |          0 |         34 |        143 |
+| string                                                   |          2 |        110 |          0 |         27 |        137 |
++----------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++----------------------------------------------------------+-------------------------+------------+------------+------------+------------+
+| filename                                                 | language                | code       | comment    | blank      | total      |
++----------------------------------------------------------+-------------------------+------------+------------+------------+------------+
+| /home/nadi/Desktop/VertexOS/src/boot/boot.asm            | x86 and x86_64 Assembly |        109 |         19 |         24 |        152 |
+| /home/nadi/Desktop/VertexOS/src/config.h                 | C++                     |         13 |          1 |          5 |         19 |
+| /home/nadi/Desktop/VertexOS/src/disk/disk.c              | C                       |         52 |          2 |         10 |         64 |
+| /home/nadi/Desktop/VertexOS/src/disk/disk.h              | C                       |         17 |          3 |         10 |         30 |
+| /home/nadi/Desktop/VertexOS/src/disk/streamer.c          | C                       |         47 |          1 |          7 |         55 |
+| /home/nadi/Desktop/VertexOS/src/disk/streamer.h          | C                       |         13 |          0 |          4 |         17 |
+| /home/nadi/Desktop/VertexOS/src/fs/fat/fat16.c           | C                       |        379 |          7 |         94 |        480 |
+| /home/nadi/Desktop/VertexOS/src/fs/fat/fat16.h           | C++                     |          5 |          0 |          4 |          9 |
+| /home/nadi/Desktop/VertexOS/src/fs/file.c                | C                       |        158 |          3 |         43 |        204 |
+| /home/nadi/Desktop/VertexOS/src/fs/file.h                | C++                     |         39 |          4 |         14 |         57 |
+| /home/nadi/Desktop/VertexOS/src/fs/pparser.c             | C                       |        108 |          1 |         35 |        144 |
+| /home/nadi/Desktop/VertexOS/src/fs/pparser.h             | C++                     |         15 |          0 |          4 |         19 |
+| /home/nadi/Desktop/VertexOS/src/idt/idt.asm              | x86 and x86_64 Assembly |         35 |          0 |         11 |         46 |
+| /home/nadi/Desktop/VertexOS/src/idt/idt.c                | C                       |         45 |          1 |         13 |         59 |
+| /home/nadi/Desktop/VertexOS/src/idt/idt.h                | C                       |         20 |          0 |          7 |         27 |
+| /home/nadi/Desktop/VertexOS/src/io/io.asm                | x86 and x86_64 Assembly |         37 |          0 |         13 |         50 |
+| /home/nadi/Desktop/VertexOS/src/io/io.h                  | C++                     |          7 |          0 |          3 |         10 |
+| /home/nadi/Desktop/VertexOS/src/kernel.asm               | x86 and x86_64 Assembly |         26 |          3 |         22 |         51 |
+| /home/nadi/Desktop/VertexOS/src/kernel.c                 | C                       |         74 |         11 |         29 |        114 |
+| /home/nadi/Desktop/VertexOS/src/kernel.h                 | C                       |         11 |          0 |          7 |         18 |
+| /home/nadi/Desktop/VertexOS/src/linker.ld                | LinkerScript            |         27 |          0 |          4 |         31 |
+| /home/nadi/Desktop/VertexOS/src/memory/heap/heap.c       | C                       |        148 |          2 |         40 |        190 |
+| /home/nadi/Desktop/VertexOS/src/memory/heap/heap.h       | C                       |         25 |          1 |          9 |         35 |
+| /home/nadi/Desktop/VertexOS/src/memory/heap/kheap.c      | C                       |         37 |          0 |          8 |         45 |
+| /home/nadi/Desktop/VertexOS/src/memory/heap/kheap.h      | C                       |          9 |          0 |          3 |         12 |
+| /home/nadi/Desktop/VertexOS/src/memory/memory.c          | C                       |         23 |          0 |          5 |         28 |
+| /home/nadi/Desktop/VertexOS/src/memory/memory.h          | C                       |          6 |          0 |          4 |         10 |
+| /home/nadi/Desktop/VertexOS/src/memory/paging/paging.asm | x86 and x86_64 Assembly |         19 |          0 |          7 |         26 |
+| /home/nadi/Desktop/VertexOS/src/memory/paging/paging.c   | C                       |         67 |          0 |         18 |         85 |
+| /home/nadi/Desktop/VertexOS/src/memory/paging/paging.h   | C++                     |         23 |          0 |          9 |         32 |
+| /home/nadi/Desktop/VertexOS/src/status.h                 | C                       |         10 |          0 |          1 |         11 |
+| /home/nadi/Desktop/VertexOS/src/string/string.c          | C                       |         98 |          0 |         25 |        123 |
+| /home/nadi/Desktop/VertexOS/src/string/string.h          | C                       |         12 |          0 |          2 |         14 |
+| Total                                                    |                         |      1,714 |         59 |        494 |      2,267 |
++----------------------------------------------------------+-------------------------+------------+------------+------------+------------+

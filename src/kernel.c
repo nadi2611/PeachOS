@@ -76,7 +76,7 @@ static struct paging_4gb_chunk* kernel_chunk = 0;
 void kernel_main()
 {
     terminal_initialize();
-    print("Hello Maria!\nDon't forget to tell me when is your free time for next week!\nSo i can arrange my schedule.");
+    print("Hello Maria!\nDon't forget to tell me when is your free time for next week!\nSo i can arrange my schedule.\n");
 
     // Initialize the heap
     kheap_init();
@@ -107,6 +107,12 @@ void kernel_main()
     // Enable the system interrupts
     enable_interrupts();
 
+    
+    int fd = fopen("0:/hello.txt", "r");
+    if (fd)
+    {
+        print("We opened hello.txt\n");
+    }
     
     while(1){}
 
