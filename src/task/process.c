@@ -119,7 +119,7 @@ int process_map_binary(struct process* process)
 {
     int res = 0;
     paging_map_to(
-        process->task->page_directory->directory_entry, 
+        process->task->page_directory, 
         (void*)PEACHOS_PROGRAM_VIRTUAL_ADDRESS, 
         process->ptr, 
         paging_align_address(process->ptr + process->size), 

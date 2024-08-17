@@ -146,7 +146,7 @@ int task_switch(struct task* task)
     
     // Switch the current paging directory to the one associated with the new task.
     // This changes the memory context to the new task's virtual memory space.
-    paging_switch(task->page_directory->directory_entry);
+    paging_switch(task->page_directory);
     
     // Return 0 to indicate the task switch was successful.
     return 0;
