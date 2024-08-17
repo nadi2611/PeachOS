@@ -1,6 +1,7 @@
 #include "paging.h"
 #include "memory/heap/heap.h"
 #include "status.h"
+#include "memory/heap/kheap.h"
 
 void paging_load_directory(uint32_t* directory);
 static uint32_t* current_directory = 0;
@@ -32,6 +33,19 @@ void paging_switch(uint32_t* directory)
 {
     paging_load_directory(directory);
     current_directory = directory;
+}
+
+void paging_free_4gb(struct paging_4gb_chunk* chunk)
+{
+    for (int i = 0; i < 1024; i++)
+    {
+        uint32_t entry = chunk->directory_entry[i];
+        uint32_t* table = (uint32_t*)(entry & 0xfffff000);
+        kfree(table);
+    }
+
+    kfree(chunk->directory_entry);
+    kfree(chunk);
 }
 
 uint32_t* paging_4gb_chunk_get_directory(struct paging_4gb_chunk* chunk)
