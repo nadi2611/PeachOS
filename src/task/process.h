@@ -24,4 +24,7 @@ struct process
     uint32_t size;                    // The size of the process in memory, typically representing the total memory footprint of the process.
 };
 
+
+int process_load_for_slot(const char* filename, struct process** process, int process_slot);
+
 #endif

@@ -39,11 +39,11 @@ struct process* process_current()
  * @param process_id The ID of the process to retrieve.
  * @return Pointer to the process structure, or an error code if the ID is invalid.
  */
-int process_get(int process_id)
+struct process* process_get(int process_id)
 {
     if (process_id < 0 || process_id >= PEACHOS_MAX_PROCESSES)
     {
-        return -EINVARG; // Return an error if the process ID is out of range.
+        return NULL; // Return an error if the process ID is out of range.
     }
 
     return processes[process_id]; // Return the process pointer from the array.
@@ -143,6 +143,57 @@ int process_map_memory(struct process* process)
 }
 
 /**
+ * Finds a free slot in the process table.
+ *
+ * @return The index of the first free slot if found, otherwise returns -EISTKN indicating that no free slot is available.
+ */
+int process_get_free_slot()
+{
+    // Iterate through all possible process slots.
+    for (int i = 0; i < PEACHOS_MAX_PROCESSES; i++)
+    {
+        // If the current slot is empty (i.e., no process is assigned to it), return this slot index.
+        if (processes[i] == 0)
+        {
+            return i;
+        }
+    }
+
+    // If no free slot is found, return an error code indicating that all slots are taken.
+    return -EISTKN;
+}
+
+/**
+ * Loads a process from a binary file and assigns it to a free slot.
+ *
+ * @param filename The name of the file containing the process to be loaded.
+ * @param process A pointer to the process structure that will be allocated and loaded.
+ * @return 0 on success, or a negative error code on failure.
+ */
+int process_load(const char* filename, struct process** process)
+{
+    int res = 0;
+
+    // Get the first available slot for the new process.
+    int process_slot = process_get_free_slot();
+    
+    // If no free slot is available, return an error code indicating memory allocation failure.
+    if (process_slot < 0)
+    {
+        res = -ENOMEM;
+        goto out;
+    }
+
+    // Load the process into the allocated slot.
+    res = process_load_for_slot(filename, process, process_slot);
+
+out:
+    // Return the result, which could be 0 for success or an error code for failure.
+    return res;
+}
+
+
+/**
  * Loads a process into a specific slot in the process array.
  *
  * @param filename The name of the binary file to load.
@@ -196,7 +247,7 @@ int process_load_for_slot(const char* filename, struct process** process, int pr
 
     _process->task = task; // Store the task pointer in the process structure.
 
-    res = process_map_memory(process); // Map the process's memory regions.
+    res = process_map_memory(_process); // Map the process's memory regions.
     if(res < 0)
     {
         goto out;

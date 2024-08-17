@@ -3,6 +3,7 @@
 #include "kernel.h"
 #include "status.h"
 #include "memory/heap/kheap.h"
+#include "process.h"
 
 // Pointer to the currently running task
 struct task* current_task = 0;
@@ -27,10 +28,10 @@ struct task* task_current()
  * Creates and initializes a new task.
  *
  * Allocates memory for a new task, initializes it, and adds it to the task list.
- *
+ * @param process Pointer to the process structure to be initialized.
  * @return Pointer to the newly created task, or an error code on failure.
  */
-struct task* task_new()
+struct task* task_new(struct process* process)
 {
     int res = 0;
     struct task* task = kzalloc(sizeof(struct task)); // Allocate memory for a new task
@@ -40,7 +41,7 @@ struct task* task_new()
         goto out;
     }
 
-    res = task_init(task); // Initialize the new task
+    res = task_init(task, process); // Initialize the new task
     if(res != PEACHOS_ALL_OK)
     {
         goto out; // If initialization fails, jump to cleanup
@@ -132,9 +133,10 @@ int task_free(struct task* task)
  * Initializes a new task structure.
  *
  * @param task Pointer to the task structure to be initialized.
+ * @param process Pointer to the process structure to be initialized.
  * @return 0 on success, or an error code (e.g., -EIO) on failure.
  */
-int task_init(struct task* task)
+int task_init(struct task* task, struct process* process)
 {
     // Clear the memory for the task structure
     memset(task, 0x00, sizeof(task));
@@ -150,6 +152,8 @@ int task_init(struct task* task)
     task->registers.ip = PEACHOS_PROGRAM_VIRTUAL_ADDRESS; // Initial instruction pointer (IP)
     task->registers.ss = USER_DATA_SEGMENT;               // Stack segment (SS)
     task->registers.esp = PEACHOS_PROGRAM_VIRTUAL_STACK_ADDRESS_START; // Initial stack pointer (ESP)
+
+    task->process = process;                             // Initial process
 
     return 0; // Return 0 on successful task initialization
 }

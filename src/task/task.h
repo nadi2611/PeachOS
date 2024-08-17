@@ -21,18 +21,20 @@ struct registers {
     uint32_t ss;    // Stack Segment (SS). Segment selector for the stack segment.
 };
 
+struct process;
 struct task {
     struct paging_4gb_chunk* page_directory; // Pointer to the page directory for the task, defining the task's virtual memory space.
     struct registers registers;             // Pointer to the CPU registers state for the task, used to save and restore the task's context.
+    struct process* process;                // Pointer to the process of the task.
     struct task* next;                       // Pointer to the next task in the task list, forming a linked list of tasks.
     struct task* prev;                       // Pointer to the previous task in the task list, allowing traversal in both directions.
 };
 
 
-int task_init(struct task* task);
+int task_init(struct task* task, struct process* process);
 int task_free(struct task* task);
 struct task* task_get_next();
-struct task* task_new();
+struct task* task_new(struct process* process);
 struct task* task_current();
 
 
