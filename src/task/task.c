@@ -130,6 +130,74 @@ int task_free(struct task* task)
 }
 
 /**
+ * @brief Switches the current task to a new task.
+ *
+ * This function updates the global `current_task` to point to the new task provided as an argument.
+ * It also switches the memory context by switching the page directory to that of the new task.
+ *
+ * @param task A pointer to the task structure representing the new task to switch to.
+ * @return Always returns 0 to indicate success.
+ */
+int task_switch(struct task* task)
+{
+    // Set the global variable `current_task` to the task that is being switched to.
+    current_task = task;
+    
+    // Switch the current paging directory to the one associated with the new task.
+    // This changes the memory context to the new task's virtual memory space.
+    paging_switch(task->page_directory->directory_entry);
+    
+    // Return 0 to indicate the task switch was successful.
+    return 0;
+}
+
+/**
+ * @brief Prepares the task environment and switches to the current task.
+ *
+ * This function first sets up the user mode registers by calling `user_registers`.
+ * It then switches to the current task using `task_switch`, which prepares the
+ * memory and context for the task.
+ *
+ * @return Always returns 0 to indicate success.
+ */
+int task_page()
+{
+    // Set up the user mode registers and prepare for user mode execution.
+    user_registers();
+    
+    // Switch to the current task. This will set up the memory and context for the task.
+    task_switch(current_task);
+    
+    // Return 0 to indicate that the operation was successful.
+    return 0;
+}
+
+/**
+ * @brief Runs the first task ever scheduled in the system.
+ *
+ * This function is responsible for switching to and starting the first task in the system.
+ * It ensures that there is a valid `current_task` and then switches to the first task (`task_head`).
+ * The function then returns to the execution context of the first task by restoring its registers and state.
+ * If no `current_task` is set, the function will trigger a panic.
+ */
+void task_run_first_ever_task()
+{
+    // If there is no current task set, trigger a panic because the system cannot continue.
+    if (!current_task)
+    {
+        panic("task_run_first_ever_task(): No current task exists!");
+    }
+
+    // Switch to the first task in the task list (`task_head`).
+    task_switch(task_head);
+    
+    // Return to the execution context of the first task by restoring its registers and state.
+    // This resumes execution from where the first task left off or starts it if it hasn't run yet.
+    task_return(&task_head->registers);
+}
+
+
+/**
  * Initializes a new task structure.
  *
  * @param task Pointer to the task structure to be initialized.
