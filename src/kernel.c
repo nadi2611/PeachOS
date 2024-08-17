@@ -12,6 +12,7 @@
 #include "disk/streamer.h"
 #include "gdt/gdt.h"
 #include "config.h"
+#include "task/tss.h"
 
 uint16_t* video_mem = 0;
 uint16_t terminal_row = 0;
@@ -81,18 +82,22 @@ void panic(const char* msg)
     while(1) {}
 }
 
+struct tss tss;
 struct gdt gdt_real[PEACHOS_TOTAL_GDT_SEGMENTS];
 struct gdt_structured gdt_structured[PEACHOS_TOTAL_GDT_SEGMENTS] = {
     {.base = 0x00, .limit = 0x00, .type = 0x00},                     // NULL segment
     {.base = 0x00, .limit = 0xffffffff, .type = 0x9a},               // Kernel code segment
-    {.base = 0x00, .limit = 0xffffffff, .type = 0x92}                // Kernel data segment
+    {.base = 0x00, .limit = 0xffffffff, .type = 0x92},               // Kernel data segment
+    {.base = 0x00, .limit = 0xffffffff, .type = 0xf8},               // User code segment
+    {.base = 0x00, .limit = 0xffffffff, .type = 0xf2},               // User data segment
+    {.base = (uint32_t)&tss, .limit = sizeof(tss), .type = 0xE9}     // TSS segment
 };
 
 
 void kernel_main()
 {
     terminal_initialize();
-    print("Hello Maria!\nDon't forget to tell me when is your free time for next week!\nSo i can arrange my schedule.\n");
+    print("Maria!\n shdele 7alk wbla ksl, bakher lnhar nnshuf shu 5lste.\n");
 
 
     memset(gdt_real, 0x00, sizeof(gdt_real));
@@ -112,6 +117,15 @@ void kernel_main()
 
     // Initialize the IDT
     idt_init();
+
+    // Setup TSS
+    memset(&tss, 0x00, sizeof(tss));
+    tss.esp0 = 0x600000;
+    tss.ss0 = KERNEL_DATA_SELECTOR;
+    
+    // Load the TSS
+    tss_load(0x28); // 0x28 offset in gdt
+
 
     // Setup paging
     kernel_chunk = paging_new_4gb(PAGING_IS_WRITEABLE | PAGING_IS_PRESENT | PAGING_ACCESS_FROM_ALL);
