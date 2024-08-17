@@ -21,6 +21,7 @@
         "tss.h": "c",
         "paging.h": "c",
         "task.h": "c",
-        "config.h": "c"
+        "config.h": "c",
+        "process.h": "c"
     }
 }
