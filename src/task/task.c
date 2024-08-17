@@ -51,6 +51,7 @@ struct task* task_new(struct process* process)
     {
         task_head = task; // Set as the head of the list if it's the first task
         task_tail = task; // Set as the tail of the list
+        current_task = task;
         goto out;
     }
 
@@ -219,6 +220,7 @@ int task_init(struct task* task, struct process* process)
     // Set up initial CPU register values for the task
     task->registers.ip = PEACHOS_PROGRAM_VIRTUAL_ADDRESS; // Initial instruction pointer (IP)
     task->registers.ss = USER_DATA_SEGMENT;               // Stack segment (SS)
+    task->registers.cs = USER_CODE_SEGMENT;
     task->registers.esp = PEACHOS_PROGRAM_VIRTUAL_STACK_ADDRESS_START; // Initial stack pointer (ESP)
 
     task->process = process;                             // Initial process

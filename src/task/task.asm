@@ -30,7 +30,7 @@ task_return:
     mov fs, ax                  ; Set the FS segment register to the value in ax (same as CS).
     mov gs, ax                  ; Set the GS segment register to the value in ax (same as CS).
 
-    push dword [ebx + 4]        ; Push the pointer to the general-purpose registers in 'regs' (starting with edi) onto the stack.
+    push dword [ebp + 4]        ; Push the pointer to the general-purpose registers in 'regs' (starting with edi) onto the stack.
     call restore_general_purpose_registers ; Call the function to restore general-purpose registers.
 
     add esp, 4                  ; Clean up the stack by removing the pushed argument for restore_general_purpose_registers.
